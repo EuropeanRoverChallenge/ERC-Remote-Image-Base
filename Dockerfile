@@ -17,7 +17,7 @@ RUN sed -i 's/#*PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ss
 
 # Install Freedom agent
 ENV FR_INSTALL_ELEMENTS="warn_no_fail,no_credentials,service_none,webrtc"
-ENV FR_URL="https://api.freedomrobotics.ai/accounts/INSTALL_ONLY/devices/GENERIC_DEVICE/installscript?mc_token=INSTALL_ONLY_DEVICE_TOKEN&install_elements=${FR_INSTALL_ELEMENTS}&auto_install_deps=true&ppa_is_allowed=true"
+ENV FR_URL="https://api.freedomrobotics.ai/accounts/INSTALL_ONLY/devices/GENERIC_DEVICE/installscript?mc_token=INSTALL_ONLY_DEVICE_TOKEN&install_elements=${FR_INSTALL_ELEMENTS}&auto_install_deps=true&ppa_is_allowed=true&verbose=true"
 RUN curl -s "${FR_URL}" | sed 's:a/nmkK3DkqZEB/ngrok-2.2.8-linux-arm64.zip:c/4VmDzA7iaHb/ngrok-stable-linux-arm64.zip:' | python \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /root/.cache/pip/* 
