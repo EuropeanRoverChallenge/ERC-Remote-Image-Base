@@ -9,7 +9,7 @@ For an example and more information, check the [ERC-Remote-Navigation-Example](h
 This image is our most tested setup for connecting real hardware available on the ERC Remote competition with the Freedom Robotics platform. We advise against using any other setups (for example, using different ROS distribution) as we can't guarantee they will work during the competition.
 
 ## Features
-The Dockerfile extends the [ros:melodic](https://hub.docker.com/_/ros) image, which is a Ubuntu 18.04 distribution with ROS Melodic installed. Apart from that, it:
+The Dockerfile extends the [ros:noetic](https://hub.docker.com/_/ros) image, which is a Ubuntu 20.04 distribution with ROS Noetic installed. Apart from that, it:
  - Installs the Freedom agent - The agent will connect to the device on the Freedom Robotics platform to let the team control the robot.
  - Sets the password for the root account - This is needed for logging via Freedom Robotics SSH tunnel.
  - Adds 2 python scripts:
