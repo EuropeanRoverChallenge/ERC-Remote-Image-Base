@@ -1,4 +1,4 @@
-FROM ros:melodic
+FROM ros:noetic
 
 # These values will be overrided by `docker run --env <key>=<value>` command
 ENV ROS_IP 127.0.0.1
@@ -6,7 +6,7 @@ ENV ROS_MASTER_URI http://127.0.0.1:11311
 
 # Install some basic dependencies
 RUN apt-get update && apt-get -y upgrade && apt-get -y install \
-  curl ssh python-pip python3-pip \
+  curl ssh python3-pip \
   && rm -rf /var/lib/apt/lists/*
 
 # Set root password
@@ -34,12 +34,12 @@ mc_token=${FR_TOKEN}\
 &verbose=${FR_VERBOSE}"
 
 # Install Freedom agent
-RUN curl -s "${FR_URL}" | python \
+RUN curl -s "${FR_URL}" | python3 \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /root/.cache/pip/* 
 
 # Install catkin-tools
-RUN apt-get update && apt-get install -y python-catkin-tools \
+RUN apt-get update && apt-get install -y python3-catkin-tools \
   && rm -rf /var/lib/apt/lists/*
 
 # Install Freedom scripts

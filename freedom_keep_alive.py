@@ -1,38 +1,22 @@
-import os
 import time
 import logging
 import subprocess
 
+
 def execute(cmd):
     """
-    Simple wrapper for executing command line 
+    Simple wrapper for executing command line
     """
     try:
-        return subprocess.check_output(cmd, shell=True).strip()
+        return subprocess.check_output(cmd, shell=True).strip().decode("utf-8")
     except Exception as e:
         return None
-
-
-def get_freedomrobotics_python_package_path( ):
-    """
-    Simple helper to get the freedom package base file path on the system
-    """
-
-    result = execute( 'pip show freedomrobotics | grep "Location:"' ).split("\n")
-
-    for l in result:
-        if "Location:" in l:
-            return l.replace("Location: ", "")
-    else:
-        raise Exception("Could not find python package: " + str(result))
 
 
 if __name__ == "__main__":
 
     logging.basicConfig(level=logging.DEBUG)
     logger = logging.getLogger(__name__)
-
-    agent_path = get_freedomrobotics_python_package_path() + "/freedomrobotics/agent.py"
 
     num_startup_failures = 0
 
